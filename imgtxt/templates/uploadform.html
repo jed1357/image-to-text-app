@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+       {{ form.as_p }}
+      <button type="submit">Upload</button>
+    </form>
+
+    {% if img_obj %}
+      <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+      <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+
+      <br><br>
+      <button id="convert" value="{{ img_obj.image.url}}" type="submit">convert</button>
+      <p id="text" style="display: hidden;"></p>
+    {% endif %}
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+  
+
+$('#convert').click(function(){
+  $.get('convert?img=' + $('#convert').val(), function(data){
+    $('#text').html(data)
+  })
+  $('#text').removeClass("hidden");
+})
+
+
+</script>
+</body>
+</html>
