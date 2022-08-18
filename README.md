@@ -4,8 +4,7 @@ This is an app to convert images to text.
 
 ## Scope
 It comes with the following:
-- A page that creates a document. 
-- After, click on share to send document linnk to email.
+- A page that gets the image and transforms it to a text.
 
 ## Purpose
 Wanted to do something worth while and learn something new.
